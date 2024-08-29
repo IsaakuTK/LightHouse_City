@@ -1,6 +1,6 @@
 import React from 'react'
 export function Header(){
     return(
-      <header>Isaac Calle Cardozo</header>
+      <header className='text-2xl font-bold'>OVELEON</header>
     )
 }

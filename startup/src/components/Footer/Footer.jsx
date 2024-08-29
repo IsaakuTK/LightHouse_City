@@ -1,8 +1,10 @@
 import React from 'react'
-export function Footer(){
+import { Button } from '../Button/Button'
+export function Footer({onRollDice, showCard}){
     return(
-      <footer>
-        <h2>Clase de programacion web</h2>
+      <footer className="bg-slate-700 flex justify-center p-3 absolute bottom-0 space-x-5">
+        <Button title={"Throw Dice"} onClick={onRollDice}/>
+        <Button title={"Show Card"} onClick={showCard}/>
       </footer>
     )
 }

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom'
-import { Footer, Header, Body } from "../../components/index";
+import { Header, Body } from "../../components/index";
+import { Card } from "../../components/Card/Card";
 
 export function Dashboard() {
 
   return (
-    <main className=' justify-start items-center w-full h-full'>
+    <main className="flex flex-col min-h-screen">
       <Header />
       <Body />
-      <Footer />
     </main>
   )
 }
