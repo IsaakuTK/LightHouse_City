@@ -30,10 +30,11 @@ export function Body() {
   }, [])
 
   const getRandomCard = () => {
-    hideDice()
-    if (cards.length > 0) {
-      const randomIndex = Math.floor(Math.random() * cards.length);
-      setRandomCard(cards[randomIndex]); // Selecciona una carta aleatoria
+    hideDice();
+    const fortuneCards = cards.filter(card => card.type === "Random");
+    if (fortuneCards.length > 0) {
+      const randomIndex = Math.floor(Math.random() * fortuneCards.length);
+      setRandomCard(fortuneCards[randomIndex]); 
     }
   };
 
@@ -55,6 +56,15 @@ export function Body() {
     }
   };
 
+  const challenge = () => {
+    hideDice();
+    const fortuneCards = cards.filter(card => card.type === "Challenge");
+    if (fortuneCards.length > 0) {
+      const randomIndex = Math.floor(Math.random() * fortuneCards.length);
+      setRandomCard(fortuneCards[randomIndex]); 
+    }
+  };
+
   const getCard = async () => {
       setCards(await getCards())
       console.log(await getCards())
@@ -69,7 +79,7 @@ export function Body() {
           <Card name={randomCard.name} wtdoes={randomCard.wtdoes}  type={randomCard.type} />
         )
       }
-      <Footer onRollDice={rollDice} showCard={getRandomCard} goodone={goodone} badone={badone} />
+      <Footer onRollDice={rollDice} showCard={getRandomCard} goodone={goodone} badone={badone} challenge={challenge} />
     </main>
   );
 }
