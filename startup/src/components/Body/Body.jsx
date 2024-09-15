@@ -3,9 +3,11 @@ import { Dice } from '../Dice/Dice';
 import { Footer } from '../Footer/Footer';
 import { Card } from '../Card/Card';
 import {getCards} from "../../services/data"
+import { Shop } from '../Shop/Shop';
 
 export function Body() {
   const [rolling, setRolling] = useState(false);
+  const [shopState, setShopState] = useState(false);
   const [number, setNumber] = useState(1);
   const [showDice, setShowDice] = useState(true);
   const [cards, setCards] = useState([])
@@ -70,16 +72,21 @@ export function Body() {
       console.log(await getCards())
   }
 
+  const actualShop = (state) =>{
+    setShopState(state)
+  }
+
   return (
     <main className="flex-grow bg-transparent flex flex-col justify-center items-center text-white">
       {
-        showDice ? (
-          <Dice rolling={rolling} number={number} />
-        ) : (
-          <Card name={randomCard.name} wtdoes={randomCard.wtdoes}  type={randomCard.type} />
-        )
+        showDice 
+          ? (<Dice rolling={rolling} number={number} />) 
+          : (<Card name={randomCard.name} wtdoes={randomCard.wtdoes}  type={randomCard.type} />)
       }
-      <Footer onRollDice={rollDice} showCard={getRandomCard} goodone={goodone} badone={badone} challenge={challenge} />
+      { shopState &&
+        <Shop closeShop={()=>actualShop(false)}/>
+      }
+      <Footer onRollDice={rollDice} showCard={getRandomCard} goodone={goodone} badone={badone} challenge={challenge} openShop={()=>actualShop(true)}/>
     </main>
   );
 }
