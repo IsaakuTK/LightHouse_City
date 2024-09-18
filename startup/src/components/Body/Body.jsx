@@ -4,6 +4,7 @@ import { Footer } from '../Footer/Footer';
 import { Card } from '../Card/Card';
 import {getCards} from "../../services/data"
 import { Shop } from '../Shop/Shop';
+import { Header } from '../Header/Header';
 
 export function Body() {
   const [rolling, setRolling] = useState(false);
@@ -78,6 +79,7 @@ export function Body() {
 
   return (
     <main className="flex-grow bg-transparent flex flex-col justify-center items-center text-white">
+      <Header />
       {
         showDice 
           ? (<Dice rolling={rolling} number={number} />) 
