@@ -16,9 +16,9 @@ export function Shop({ closeShop, array }) {
         </p>
 
         {/* Lista de artículos */}
-        <div className="flex flex-col h-full w-full items-center max-h-full overflow-auto">
+        <div className="flex flex-col h-full w-10/12 items-center max-h-full overflow-auto space-y-10">
           {array.map((item, index) => (
-            <div key={index} className="px-2 md:px-4 py-2 cursor-pointer w-full">
+            <div key={index} className="px-2 md:px-4 py-2 cursor-pointer w-full bg-slate-800">
               <Item image={item.image} text={item.text} value={item.value} />
             </div>
           ))}
