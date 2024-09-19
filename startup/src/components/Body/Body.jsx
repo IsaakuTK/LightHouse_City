@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Dice } from '../Dice/Dice';
 import { Footer } from '../Footer/Footer';
 import { Card } from '../Card/Card';
-import {getCards} from "../../services/data"
+import { getCards } from "../../services/data"
 import { Shop } from '../Shop/Shop';
 import { Header } from '../Header/Header';
+import { getItems } from '../../services/itemsData';
 
 export function Body() {
   const [rolling, setRolling] = useState(false);
@@ -12,6 +13,7 @@ export function Body() {
   const [number, setNumber] = useState(1);
   const [showDice, setShowDice] = useState(true);
   const [cards, setCards] = useState([])
+  const [array, setArray] = useState([])
   const [randomCard, setRandomCard] = useState(null);
 
   const rollDice = () => {
@@ -29,7 +31,7 @@ export function Body() {
   };
 
   useEffect(() => {
-    getCard()
+    getData()
   }, [])
 
   const getRandomCard = () => {
@@ -52,7 +54,7 @@ export function Body() {
 
   const badone = () => {
     hideDice();
-    const fortuneCards = cards.filter(card => card.type === "Miss Fortune");
+    const fortuneCards = cards.filter(card => card.type === "Misfortune");
     if (fortuneCards.length > 0) {
       const randomIndex = Math.floor(Math.random() * fortuneCards.length);
       setRandomCard(fortuneCards[randomIndex]); 
@@ -68,9 +70,9 @@ export function Body() {
     }
   };
 
-  const getCard = async () => {
+  const getData = async () => {
       setCards(await getCards())
-      console.log(await getCards())
+      setArray(await getItems())
   }
 
   const actualShop = (state) =>{
@@ -86,7 +88,7 @@ export function Body() {
           : (<Card name={randomCard.name} wtdoes={randomCard.wtdoes}  type={randomCard.type} />)
       }
       { shopState &&
-        <Shop closeShop={()=>actualShop(false)}/>
+        <Shop closeShop={()=>actualShop(false)} array={array}/>
       }
       <Footer onRollDice={rollDice} showCard={getRandomCard} goodone={goodone} badone={badone} challenge={challenge} openShop={()=>actualShop(true)}/>
     </main>

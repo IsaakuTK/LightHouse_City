@@ -27,7 +27,10 @@ a:hover {
 }
 
 body {
-  background-color:rgba(0, 0, 0, 0.87);
+  /* background-color:rgba(0, 0, 0, 0.87); */
+  background-repeat: no-repeat;
+  background-image: url(https://a-static.besthdwallpaper.com/night-city-park-wallpaper-1152x720-74535_2.jpg);
+  background-size: cover;
   margin: 0;
   display: flex;
   place-items: center;
