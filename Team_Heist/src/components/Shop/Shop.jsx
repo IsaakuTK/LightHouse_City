@@ -10,7 +10,7 @@ export function Shop({ closeShop, array }) {
 
       {/* Ventana emergente */}
       <div className="relative bg-slate-700 p-4 md:p-8 rounded-lg shadow-lg z-20 w-11/12 md:w-8/12 lg:w-6/12 h-5/6 md:h-4/6 flex flex-col items-center">
-        <button onClick={closeShop} className="self-end text-white">X</button>
+        <button onClick={closeShop} className="self-end text-white bg-black">X</button>
         <p className="text-white text-lg font-bold mb-4 md:mb-10 text-center">
           Hi little thief! Here I have some articles that may interest you.
         </p>
